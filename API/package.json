@@ -16,7 +16,7 @@
     "migration": "node -e \"require('./__tests__/_utils').runMigration()\"",
     "seed": "node -e \"require('./__tests__/_utils').runSeed()\"",
     "swagger-autogen": "node swagger.js",
-    "build": "node build.js"
+    "build": "node build"
   },
   "repository": {
     "type": "git",

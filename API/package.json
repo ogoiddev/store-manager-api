@@ -15,8 +15,7 @@
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
     "migration": "node -e \"require('./__tests__/_utils').runMigration()\"",
     "seed": "node -e \"require('./__tests__/_utils').runSeed()\"",
-    "swagger-autogen": "node swagger.js",
-    "build": "node build"
+    "swagger-autogen": "node swagger.js"
   },
   "repository": {
     "type": "git",

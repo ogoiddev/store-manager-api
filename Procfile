@@ -1,1 +1,1 @@
-web: npm run debug /web
+web: docker-compose up -d

@@ -18,12 +18,11 @@ app.get('/', (_request, response) => {
 app.get('/db', async (_req, res) => {
     try {
       const client = await connection.connect();
-      const result = await client.query('SELECT * FROM test_table');
+      const result = await client.query('SELECT * FROM StoreManager');
       const results = { results: (result) ? result.rows : null };
       res.render('pages/db', results);
       client.release();
     } catch (err) {
-      console.error(err);
       res.send(`Error ${err}`);
     }
   });

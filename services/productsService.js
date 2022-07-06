@@ -8,9 +8,7 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  const data = await productsModel.getById(id); 
-  console.log(data);
-  
+  const data = await productsModel.getById(id);  
   if (!data.length) throw new ErrorProvider(404, 'Product not found');
   return data[0];
 };

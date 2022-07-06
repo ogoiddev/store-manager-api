@@ -6,6 +6,7 @@ const swaggerFile = require('./swagger_output.json');
 const productsRouter = require('./routes/productsRouter');
 const salesRouter = require('./routes/salesRouter');
 const error = require('./middleware/errorMiddleware');
+const connection = require('./server/connection');
 
 const app = express();
 
@@ -13,6 +14,19 @@ const app = express();
 app.get('/', (_request, response) => {
   response.send();
 });
+
+app.get('/db', async (_req, res) => {
+    try {
+      const client = await connection.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { results: (result) ? result.rows : null };
+      res.render('pages/db', results);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send(`Error ${err}`);
+    }
+  });
 
 app.use(bodyParser.json());
 

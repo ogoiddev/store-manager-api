@@ -13,7 +13,7 @@
     "start": "node index.js",
     "debug": "nodemon --ignore coverage index.js",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
-    "migration": "node -e \"require('./__tests__/_utils').runMigration()\"",
+    "migration": "node migration.sql",
     "seed": "node -e \"require('./__tests__/_utils').runSeed()\"",
     "swagger-autogen": "node swagger.js"
   },
@@ -37,6 +37,7 @@
     "helmet": "^5.1.0",
     "joi": "^17.6.0",
     "mysql2": "^2.3.3",
+    "pg": "^8.7.3",
     "shelljs": "^0.8.5",
     "swagger-autogen": "^2.21.4",
     "swagger-ui-express": "^4.4.0"

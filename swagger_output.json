@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "thawing-mesa-23891.herokuapp.com",
+  "host": "mysql://bf079330fa8d20:8122ceeb@us-cdbr-east-06.cleardb.net/heroku_241bb786a0eda69?reconnect=true",
   "basePath": "/",
   "schemes": [
     "http"

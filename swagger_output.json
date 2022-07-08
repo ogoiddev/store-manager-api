@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "us-cdbr-east-06.cleardb.net",
+  "host": "https://thawing-mesa-23891.herokuapp.com/",
   "basePath": "/",
   "schemes": [
     "http"

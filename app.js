@@ -17,7 +17,7 @@ app.get('/', (_request, response) => {
 
 app.get('/db', async (_req, res) => {
     try {
-      const result = await connection.query('SELECT * FROM StoreManager');
+      const result = await connection.query('SELECT * FROM heroku_241bb786a0eda69');
       const results = { results: (result) ? result.rows : null };
       res.render('pages/db', results);
       connection.release();

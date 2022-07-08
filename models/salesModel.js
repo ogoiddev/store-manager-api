@@ -1,13 +1,13 @@
 const connection = require('../server/connection');
 
 const addSale = async (sale) => {
-  const query = 'INSERT INTO StoreManager.sales (date) VALUES (CURRENT_TIMESTAMP);';
+  const query = 'INSERT INTO heroku_241bb786a0eda69.sales (date) VALUES (CURRENT_TIMESTAMP);';
   const [data] = await connection.query(query, [sale]);
   return data;
 };
 
 const addSaleProduct = async (saleId, productId, quantity) => {
-  const query = `INSERT INTO StoreManager.sales_products 
+  const query = `INSERT INTO heroku_241bb786a0eda69.sales_products 
                 (sale_id, product_id, quantity) VALUES (?, ?, ?);`;
   await connection.query(query, [saleId, productId, quantity]);
 };
@@ -17,9 +17,10 @@ const getAll = async () => {
                         product_id as productId,
                         quantity,
                         date
-                  FROM StoreManager.sales_products
-                    JOIN StoreManager.sales
-                    ON StoreManager.sales.id = StoreManager.sales_products.sale_id;`;
+                  FROM heroku_241bb786a0eda69.sales_products
+                    JOIN heroku_241bb786a0eda69.sales
+                    ON heroku_241bb786a0eda69.sales.id
+                    = heroku_241bb786a0eda69.sales_products.sale_id;`;
   const [data] = await connection.query(query);
   return data;
 };
@@ -27,8 +28,8 @@ const getAll = async () => {
 const getById = async (saleId) => { 
   const query = `SELECT date, product_id  as productId, quantity FROM
                   (SELECT id, date, product_id, quantity
-                    FROM StoreManager.sales_products
-                      JOIN StoreManager.sales
+                    FROM heroku_241bb786a0eda69.sales_products
+                      JOIN heroku_241bb786a0eda69.sales
                       ON sales_products.sale_id = sales.id
                       HAVING sales.id = ?
                     ORDER BY id, product_id) as list;`;
@@ -37,7 +38,7 @@ const getById = async (saleId) => {
 };
 
 const updateSale = async (productId, quantity, saleId) => {
-  const query = `UPDATE StoreManager.sales_products as product
+  const query = `UPDATE heroku_241bb786a0eda69.sales_products as product
                   SET product.quantity = ?
                   WHERE product.sale_id = ? AND product.product_id = ?;`;
   await connection.query(query, [quantity, saleId, productId]);
@@ -45,7 +46,8 @@ const updateSale = async (productId, quantity, saleId) => {
 
 const deleteSale = async (saleId) => { 
   const query = `DELETE product, sale
-                  FROM StoreManager.sales_products as product, StoreManager.sales as sale
+                  FROM heroku_241bb786a0eda69.sales_products as product, 
+                  heroku_241bb786a0eda69.sales as sale
                   WHERE sale.id = ?
                   AND product.sale_id = ?;`;
   await connection.query(query, [saleId, saleId]);

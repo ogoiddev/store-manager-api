@@ -3,7 +3,7 @@ const salesModel = require('../models/salesModel');
 const ErrorProvider = require('../error');
 
 const checkProductId = async (Ids) => {  
-  const check = await Promise.all(Ids.map(async (sale) => {
+  const [check] = await Promise.all(Ids.map(async (sale) => {
     const id = await productsModel.getById(sale.productId);
     return id;
   }));
